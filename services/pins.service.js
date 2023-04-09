@@ -35,7 +35,6 @@ module.exports.deletePin = catchAsyncError(async(req, res) => {
     res.status(200).json({ message: "Pin Delete Success" });
 })
 module.exports.pinDetails = catchAsyncError(async(req, res) => {
-    console.log('pin details')
     const comments = []
     const { pinId } = req.params
     const pin = await pinModel.findOne({ _id: pinId }).populate('userId')

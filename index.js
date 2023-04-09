@@ -9,7 +9,6 @@ const userRoute = require('./routes/user.routes')
 const pinRoute = require('./routes/pin.routes');
 const commentRoute = require('./routes/comment.routes');
 const { verify } = require('./middleware/verify');
-var bodyParser = require('body-parser');
 const globalMiddleWareError = require('./util/globalMiddleWareError');
 
 

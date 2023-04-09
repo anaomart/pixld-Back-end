@@ -1,7 +1,7 @@
 const commentModel = require('../models/comment.model');
 const pinModel = require('../models/pin.model');
-
-exports.addComment = async(req, res) => {
+const { catchAsyncError } = require('../util/catchAsync');
+exports.addComment = catchAsyncError(async(req, res) => {
     const { comment, pinId } = req.body;
 
     const addedComment = await commentModel.create({ userId: req.userId, comment: comment })
@@ -13,13 +13,15 @@ exports.addComment = async(req, res) => {
     })
     res.status(200).json({ message: "comment add " })
 
-}
-module.exports.getComment = async(req, res) => {
+})
+
+exports.getComment = catchAsyncError(async(req, res) => {
     const { commentId } = req.params;
     const comment = await commentModel.findById(commentId).populate('userId')
     res.status(200).json({ comment })
-}
-exports.deleteComment = async(req, res) => {
+})
+
+exports.deleteComment = catchAsyncError(async(req, res) => {
     const { commentId } = req.params;
     const { pinId } = req.body;
 
@@ -32,4 +34,4 @@ exports.deleteComment = async(req, res) => {
     })
     const deletedComment = await commentModel.findByIdAndDelete(commentId)
     res.status(200).json({ message: "comment deleted " })
-}
+})

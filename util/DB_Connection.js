@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const CONNECTION_URL = 'mongodb://127.0.0.1:27017/shareMe'
+const CONNECTION_URL = process.env.MONGODB_URL
 
 function DB_Connection() {
 

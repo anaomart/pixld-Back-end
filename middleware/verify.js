@@ -11,7 +11,6 @@ module.exports.verify = async(req, res, next) => {
     if (!exist) {
         return res.status(403).json({ message: "user not found" })
     } else {
-        console.log(exist)
         req.userId = exist._id
         req.email = email
         req.name = name

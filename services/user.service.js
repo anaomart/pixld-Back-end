@@ -2,19 +2,17 @@ const userModel = require('../models/user.model');
 const jwt_decode = require('jwt-decode');
 const { catchAsyncError } = require('../util/catchAsync');
 
-console.log("welcome to User Route")
 module.exports.LoginJWT = catchAsyncError(async(req, res) => {
+    console.log("login ")
     const { email, name, picture } = jwt_decode(req.body.JWT)
+
     if (!email || !name) {
         return res.status(403).json({ message: 'Something went wrong' })
     }
-    if (!userModel.find({ email })) {
-        await userModel.create({
-            email: email,
-            name: name,
-            image: picture
-        })
-        console.log('new User created')
+    const exists = await userModel.find({ email });
+
+    if (exists) {
+        const user = await userModel.insertMany({ email, name, image: picture })
     }
     res.status(200).json({ message: 'Login successfully' })
 })
