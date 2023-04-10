@@ -7,10 +7,7 @@ services:
         - "3002:3002"
 
       environment:
-        -  PORT=3002
-        - CLOUDINARY_API_KEY=826488879423284
-        - CLOUDINARY_API_SECRET=45NTb94cUlFiQaid2rHr31cV3bs
-        - MONGODB_URL=mongodb://anaomart:omarashraf@ac-3cjch4l-shard-00-00.49mdvgj.mongodb.net:27017,ac-3cjch4l-shard-00-01.49mdvgj.mongodb.net:27017,ac-3cjch4l-shard-00-02.49mdvgj.mongodb.net:27017/?ssl=true&replicaSet=atlas-j20wdy-shard-0&authSource=admin&retryWrites=true&w=majority
+       - ./.env
     nginx:
       image: nginx:stable-alpine
       ports:
