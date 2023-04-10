@@ -6,7 +6,7 @@ services:
       ports:
         - "3002:3002"
 
-      environment:
+      env_file:
        - ./.env
     nginx:
       image: nginx:stable-alpine
