@@ -1,3 +1,6 @@
 node_modules
 .env
 .gitignore
+Dockerfile
+docker-compose.yml
+.dockerignore

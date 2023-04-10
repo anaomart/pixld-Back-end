@@ -17,7 +17,9 @@ const globalMiddleWareError = require('./util/globalMiddleWareError');
 app.use(cors())
 app.use(express.json())
 app.use(express.static('uploads'))
-
+app.use('/*', (req, res, next) => {
+    res.send("<h1>Welcome to Share me </h1>")
+})
 app.use('/user', userRoute)
 app.use('/pin', verify, pinRoute)
 app.use('/comment', verify, commentRoute)
