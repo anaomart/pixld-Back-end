@@ -1,18 +1,7 @@
 version: '3'
 services:
     node-api:
-      container_name: node-api
       build: . 
-      ports:
-        - "3002:3002"
-
       env_file:
        - ./.env
-    nginx:
-      image: nginx:stable-alpine
-      ports:
-        - "80:80"
-      volumes:
-        - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      depends_on:
-       - node-api
+    
