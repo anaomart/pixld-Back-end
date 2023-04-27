@@ -18,7 +18,8 @@ app.use(express.static('uploads'));
 // routes
 app.use('/user', userRoute)
 app.use('/pin', verify, pinRoute)
-app.use('/comment', verify, commentRoute)
+app.use('/comment', verify, commentRoute);
+// global error handlers
 app.use(globalMiddleWareError);
 //
 DB_Connection();
