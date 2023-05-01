@@ -4,7 +4,7 @@ const app = express();
 require('dotenv').config();
 const cors = require('cors');
 const DB_Connection = require('./util/DB_Connection');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const userRoute = require('./routes/user.routes')
 const pinRoute = require('./routes/pin.routes');
 const commentRoute = require('./routes/comment.routes');
