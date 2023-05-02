@@ -25,14 +25,19 @@ app.use(express.json())
 app.use(express.static('uploads'));
 // routes
 console.log("userInfo ")
-
+app.get('/ssl', (req, res) => {
+    console.log('ssl certificate')
+    res.json({ message: 'ssl certificate' })
+    res.redirect('https://www.pixld.agency')
+})
+app.get('test', (req, res) => {
+    res.json({ message: 'test working' })
+})
 app.use('/user', userRoute)
 app.use('/pin', verify, pinRoute)
 app.use('/comment', verify, commentRoute);
-app.get('/ssl', (req, res) => {
-        res.redirect('https://www.pixld.agency')
-    })
-    // global error handlers
+
+// global error handlers
 app.use(globalMiddleWareError);
 //
 DB_Connection();
