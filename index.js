@@ -30,6 +30,7 @@ app.get('/ssl', (req, res) => {
     res.redirect('https://www.pixld.agency')
 })
 app.get('/test', (req, res) => {
+    console.log('test working')
     res.json({ message: 'test working' })
 })
 app.use('/user', userRoute)
