@@ -29,7 +29,10 @@ console.log("userInfo ")
 app.use('/user', userRoute)
 app.use('/pin', verify, pinRoute)
 app.use('/comment', verify, commentRoute);
-// global error handlers
+app.get('/ssl', (req, res) => {
+        res.redirect('https://www.pixld.agency')
+    })
+    // global error handlers
 app.use(globalMiddleWareError);
 //
 DB_Connection();
