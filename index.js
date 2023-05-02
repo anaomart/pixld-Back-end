@@ -27,10 +27,9 @@ app.use(express.static('uploads'));
 console.log("userInfo ")
 app.get('/ssl', (req, res) => {
     console.log('ssl certificate')
-    res.json({ message: 'ssl certificate' })
     res.redirect('https://www.pixld.agency')
 })
-app.get('test', (req, res) => {
+app.get('/test', (req, res) => {
     res.json({ message: 'test working' })
 })
 app.use('/user', userRoute)
