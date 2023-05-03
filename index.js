@@ -22,9 +22,8 @@ app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
-app.use(bodyParser.json({ limit: '50mb' })); // define the size limit
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true })); // define the size limit
-app.use(express.json());
+app.use(express.json({ limit: '50mb' })); // define the size limit
+app.use(express.urlencoded({ limit: '50mb', extended: true })); // define the size limit
 app.use(express.static('uploads'));
 // routes
 console.log("userInfo ")
