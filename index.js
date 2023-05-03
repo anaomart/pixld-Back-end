@@ -10,7 +10,7 @@ const pinRoute = require('./routes/pin.routes');
 const commentRoute = require('./routes/comment.routes');
 const { verify } = require('./middleware/verify');
 const globalMiddleWareError = require('./util/globalMiddleWareError');
-
+var bodyParser = require('body-parser');
 // middle wares
 app.use(cors({ origin: ["https://www.pixld.agency", "https://pixld.agency"] }))
 app.use(function(req, res, next) {
@@ -22,7 +22,9 @@ app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
-app.use(express.json())
+app.use(bodyParser.json({ limit: '50mb' })); // define the size limit
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true })); // define the size limit
+app.use(express.json());
 app.use(express.static('uploads'));
 // routes
 console.log("userInfo ")
