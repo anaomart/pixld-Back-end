@@ -12,6 +12,6 @@ module.exports.uploadImage = (name) => {
             cb(null, unique + '-' + file.originalname);
         }
     })
-    const upload = multer({ storage })
+    const upload = multer({ storage, limits: { fieldSize: '50MB' } })
     return upload.single(name)
 }

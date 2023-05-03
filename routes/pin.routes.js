@@ -3,7 +3,7 @@ const { uploadImage } = require('../util/imageUpload');
 
 const router = require('express').Router();
 
-
+console.log('pin Route')
 router.get("/", getAllPins)
 router.get("/save", getUserPins)
 router.get("/:pinId", pinDetails)
