@@ -14,8 +14,8 @@ var bodyParser = require('body-parser');
 // middle wares
 app.use(cors({ origin: ["https://www.pixld.agency", "https://pixld.agency"] }))
 app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'https://pixld.agency');
-    res.setHeader('Access-Control-Allow-Origin', 'https://www.pixld.agency');
+    res.setHeader('Access-Control-Allow-Origin', 'https://share-me-seven.vercel.app/');
+    res.setHeader('Access-Control-Allow-Origin', 'https://share-me-seven.vercel.app/');
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
