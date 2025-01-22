@@ -1,4 +1,3 @@
-process.on('uncaughtException', (err) => console.error('uncaughtException', err))
 const express = require('express');
 const app = express();
 require('dotenv').config();
@@ -11,41 +10,48 @@ const commentRoute = require('./routes/comment.routes');
 const { verify } = require('./middleware/verify');
 const globalMiddleWareError = require('./util/globalMiddleWareError');
 var bodyParser = require('body-parser');
+
+// CORS configuration
+const corsOptions = {
+    origin: ['https://www.pixld.agency', 'https://pixld.agency', 'https://share-me-seven.vercel.app'],
+    methods: 'GET,POST,OPTIONS,PUT,PATCH,DELETE',
+    allowedHeaders: 'X-Requested-With,content-type',
+    credentials: true
+};
+
 // middle wares
-app.use(cors({ origin: ["https://www.pixld.agency", "https://pixld.agency"] }))
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'https://share-me-seven.vercel.app/');
-    res.setHeader('Access-Control-Allow-Origin', 'https://share-me-seven.vercel.app/');
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
+app.use(cors(corsOptions));
+
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({
     limit: '50mb',
     extended: true,
     parameterLimit: 50000
 }));
+
 app.use(express.static('uploads'));
+
 // routes
-console.log("userInfo ")
 app.get('/ssl', (req, res) => {
-    console.log('ssl certificate')
-    res.redirect('https://www.pixld.agency')
-})
+    console.log('ssl certificate');
+    res.redirect('https://www.pixld.agency');
+});
+
 app.get('/test', (req, res) => {
-    console.log('test working')
-    res.json({ message: 'test working' })
-})
-app.use('/user', userRoute)
-app.use('/pin', verify, pinRoute)
+    console.log('test working');
+    res.json({ message: 'test working' });
+});
+
+app.use('/user', userRoute);
+app.use('/pin', verify, pinRoute);
 app.use('/comment', verify, commentRoute);
 
 // global error handlers
 app.use(globalMiddleWareError);
-//
+
+// Database connection
 DB_Connection();
-app.listen(PORT, () => console.log("Listening on port: " + PORT))
-process.on('uncaughtException', (err) => console.log(err))
+
+app.listen(PORT, () => console.log("Listening on port: " + PORT));
+
+process.on('uncaughtException', (err) => console.log(err));
