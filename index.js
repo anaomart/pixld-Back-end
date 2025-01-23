@@ -13,10 +13,10 @@ var bodyParser = require('body-parser');
 
 // CORS configuration
 const corsOptions = {
-    origin: ['https://www.pixld.agency', 'https://pixld.agency', 'https://share-me-seven.vercel.app'],
-    methods: 'GET,POST,OPTIONS,PUT,PATCH,DELETE',
-    allowedHeaders: 'X-Requested-With,content-type',
-    credentials: true
+    origin: 'https://share-me-seven.vercel.app', // Allow only this domain
+    methods: 'GET,POST,OPTIONS,PUT,PATCH,DELETE', // Allowed HTTP methods
+    allowedHeaders: 'X-Requested-With,content-type,Authorization', // Allowed headers
+    credentials: true // Allow credentials (cookies, authorization headers, etc.)
 };
 
 // middle wares
